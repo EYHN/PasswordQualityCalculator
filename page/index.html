@@ -10,7 +10,7 @@
 <body>
   <form>
     <h1>Password Quality Calculator</h1>
-    <p><a href="https://github.com/EYHN/PasswordQuality">Fork me on Github</a>&nbsp;&nbsp;&nbsp;<a href="./zh">中文</a></p>
+    <p><a href="https://github.com/EYHN/PasswordBenchmark">Fork me on Github</a>&nbsp;&nbsp;&nbsp;<a href="./zh">中文</a></p>
     <p>Please enter a password below to calculate the strength of the password. This won't upload your password, all
       calculations happen locally.</p>
     <p><label for="password">Password: </label><br><input type="password" id="password" /></p>
@@ -43,7 +43,7 @@
     <br>
     <br>
   </form>
-  <script src="./lib/PasswordQuality.js"></script>
+  <script src="./lib/PasswordBenchmark.js"></script>
   <script src="./lib/MostPopularPasswords.js"></script>
   <script>
     const startColorRgb = [244, 67, 54];
@@ -53,7 +53,7 @@
     const qualityDescription = document.getElementById('quality-description');
     const passwordInput = document.getElementById('password');
     function work() {
-      const quality = PasswordQuality(passwordInput.value);
+      const quality = PasswordBenchmark(passwordInput.value);
       console.log(passwordInput.value, quality)
       qualityText.innerText = quality + ' bits'
       const progressValue = Math.max(Math.min(quality / 128, 1), 0);

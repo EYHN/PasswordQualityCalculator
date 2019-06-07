@@ -1,13 +1,14 @@
 {
-  "name": "password-quality",
+  "name": "password-benchmark",
   "version": "1.0.0",
-  "main": "QualityEstimation.js",
+  "main": "lib/PasswordBenchmark.js",
   "license": "MIT",
   "scripts": {
     "test": "babel-node ./test/test.js",
     "clean": "rimraf ./dist ./page/lib",
     "build:page": "cpx \"./dist/*\" ./page/lib",
-    "build": "webpack --config webpack.config.js && npm run build:page"
+    "build": "npm run clean && webpack --config webpack.config.js && npm run build:page",
+    "prepublish": "npm run build && npm run test"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

@@ -1,8 +1,8 @@
-# PasswordQuality
+# PasswordBenchmark
 
 一个通过高级算法分析密码安全强度的 JavaScript 库。
 
-[查看演示](https://eyhn.github.io/PasswordQuality/zh)
+[查看演示](https://eyhn.github.io/PasswordBenchmark/zh)
 
 [English Ver.](./README.md)
 
@@ -13,16 +13,16 @@
 在 HTML 中添加 script 标签
 
 ```html
-<script src="./PasswordQuality.js"></script>
+<script src="./PasswordBenchmark.js"></script>
 
 <!-- [ 可选的 ] 大约 10000 个常用密码的列表, 86kb (gzip 32kb) -->
 <script src="./MostPopularPasswords.js"></script>
 ```
 
-调用 `PasswordQuality` 计算密码强度
+调用 `PasswordBenchmark` 计算密码强度
 
 ```js
-PasswordQuality('you password here');
+PasswordBenchmark('you password here');
 // 返回计算出的密码强度
 ```
 
@@ -31,25 +31,25 @@ PasswordQuality('you password here');
 从 npm 下载这个库
 
 ```shell
-npm install --save password-quality
+npm install --save password-benchmark
 ```
 
 引入这个库并初始化常用密码列表
 
 ```js
-import PasswordQuality from 'password-quality';
+import PasswordBenchmark from 'password-benchmark';
 
 // [ 可选的 ] 大约 10000 个常用密码的列表, 86kb (gzip 32kb)
-import MostPopularPasswords from 'password-quality/dist/MostPopularPasswords'
+import MostPopularPasswords from 'password-benchmark/dist/MostPopularPasswords'
 
 // 加载常用密码列表
-PasswordQuality.PopularPasswords.load(MostPopularPasswords)
+PasswordBenchmark.PopularPasswords.load(MostPopularPasswords)
 ```
 
-调用 `PasswordQuality` 计算密码强度
+调用 `PasswordBenchmark` 计算密码强度
 
 ```js
-PasswordQuality('you password here');
+PasswordBenchmark('you password here');
 // 返回计算出的密码强度
 ```
 

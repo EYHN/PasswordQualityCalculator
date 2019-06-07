@@ -12,18 +12,18 @@ const babel = {
 };
 
 module.exports = [{
-  name: 'password-quality',
+  name: 'password-benchmark',
   mode: 'production',
   context: path.resolve(__dirname, './dist/'),
   target: 'web',
   entry: [
-    path.resolve(__dirname, './lib/PasswordQuality.js')
+    path.resolve(__dirname, './lib/PasswordBenchmark.js')
   ],
   output: {
-    library: 'PasswordQuality',
+    library: 'PasswordBenchmark',
     libraryTarget: 'umd',
     libraryExport: 'default',
-    filename: 'PasswordQuality.js',
+    filename: 'PasswordBenchmark.js',
     publicPath: '/',
     chunkFilename: '[name].js',
     path: path.resolve(__dirname, './dist/')
