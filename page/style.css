@@ -5,6 +5,7 @@
 form {
   margin: 0 auto;
   max-width: 600px;
+  padding: 0 16px;
 }
 
 label {
@@ -63,4 +64,8 @@ input {
 
 blockquote {
   color: #666
+}
+
+footer {
+  text-align: right;
 }

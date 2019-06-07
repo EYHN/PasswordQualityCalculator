@@ -2,7 +2,9 @@
 
 A JavaScript library that uses an advanced algorithm for estimating the quality/strength of passwords.
 
-![](./example.png)
+[Click here to the demo](https://eyhn.github.io/PasswordQuality/)
+
+[中文文档](./README-zh.md)
 
 ## How to Use
 
