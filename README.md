@@ -1,6 +1,6 @@
 # PasswordQuality
 
-Calculate the security quality of passwords.
+A JavaScript library that uses an advanced algorithm for estimating the quality/strength of passwords.
 
 ![](./example.png)
 
