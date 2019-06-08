@@ -15,7 +15,6 @@ module.exports = [{
   name: 'password-benchmark',
   mode: 'production',
   context: path.resolve(__dirname, './dist/'),
-  target: 'web',
   entry: [
     path.resolve(__dirname, './lib/PasswordBenchmark.js')
   ],
@@ -26,6 +25,7 @@ module.exports = [{
     filename: 'PasswordBenchmark.js',
     publicPath: '/',
     chunkFilename: '[name].js',
+    globalObject: 'typeof self !== \'undefined\' ? self : this',
     path: path.resolve(__dirname, './dist/')
   },
   devtool: 'source-map',
@@ -38,7 +38,6 @@ module.exports = [{
   name: 'most-popular-passwords',
   mode: 'production',
   context: path.resolve(__dirname, './dist/'),
-  target: 'web',
   entry: [
     path.resolve(__dirname, './lib/MostPopularPasswords.js')
   ],
@@ -49,6 +48,7 @@ module.exports = [{
     filename: 'MostPopularPasswords.js',
     publicPath: '/',
     chunkFilename: '[name].js',
+    globalObject: 'typeof self !== \'undefined\' ? self : this',
     path: path.resolve(__dirname, './dist/')
   },
   module: {
