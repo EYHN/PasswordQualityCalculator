@@ -1,7 +1,7 @@
 {
-  "name": "password-benchmark",
+  "name": "password-quality-calculator",
   "version": "1.0.4",
-  "main": "dist/PasswordBenchmark.js",
+  "main": "dist/PasswordQualityCalculator.js",
   "license": "MIT",
   "scripts": {
     "test": "babel-node ./test/test.js",

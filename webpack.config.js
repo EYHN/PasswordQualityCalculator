@@ -12,17 +12,17 @@ const babel = {
 };
 
 module.exports = [{
-  name: 'password-benchmark',
+  name: 'password-quality-calculator',
   mode: 'production',
   context: path.resolve(__dirname, './dist/'),
   entry: [
-    path.resolve(__dirname, './lib/PasswordBenchmark.js')
+    path.resolve(__dirname, './lib/PasswordQualityCalculator.js')
   ],
   output: {
-    library: 'PasswordBenchmark',
+    library: 'PasswordQualityCalculator',
     libraryTarget: 'umd',
     libraryExport: 'default',
-    filename: 'PasswordBenchmark.js',
+    filename: 'PasswordQualityCalculator.js',
     publicPath: '/',
     chunkFilename: '[name].js',
     globalObject: 'typeof self !== \'undefined\' ? self : this',

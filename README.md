@@ -1,8 +1,8 @@
-# PasswordBenchmark
+# PasswordQualityCalculator
 
 A JavaScript library that uses an advanced algorithm for estimating the quality/strength of passwords.
 
-[Click here to the demo](https://eyhn.github.io/PasswordBenchmark/)
+[Click here to the demo](https://eyhn.github.io/PasswordQualityCalculator/)
 
 [中文文档](./README-zh.md)
 
@@ -13,7 +13,7 @@ A JavaScript library that uses an advanced algorithm for estimating the quality/
 Add js script to your html file.
 
 ```html
-<script src="./PasswordBenchmark.js"></script>
+<script src="./PasswordQualityCalculator.js"></script>
 
 <!-- [ optional ] list of about 10000 most common passwords, 86kb (gzip 32kb)  -->
 <script src="./MostPopularPasswords.js"></script>
@@ -22,7 +22,7 @@ Add js script to your html file.
 Calculate the security quality of passwords.
 
 ```js
-PasswordBenchmark('you password here');
+PasswordQualityCalculator('you password here');
 // return the security quality of passwords.
 ```
 
@@ -31,25 +31,25 @@ PasswordBenchmark('you password here');
 First download from npm.
 
 ```shell
-npm install --save password-benchmark
+npm install --save password-quality-calculator
 ```
 
 Import and initialize the library.
 
 ```js
-import PasswordBenchmark from 'password-benchmark';
+import PasswordQualityCalculator from 'password-quality-calculator';
 
 // [ optional ] list of about 10000 most common passwords, 86kb (gzip 32kb)
-import MostPopularPasswords from 'password-benchmark/dist/MostPopularPasswords'
+import MostPopularPasswords from 'password-quality-calculator/dist/MostPopularPasswords'
 
 // Load the popular passwords list
-PasswordBenchmark.PopularPasswords.load(MostPopularPasswords)
+PasswordQualityCalculator.PopularPasswords.load(MostPopularPasswords)
 ```
 
 Calculate the security quality of passwords.
 
 ```js
-PasswordBenchmark('you password here');
+PasswordQualityCalculator('you password here');
 // return the security quality of passwords.
 ```
 
