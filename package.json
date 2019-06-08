@@ -1,7 +1,7 @@
 {
   "name": "password-benchmark",
-  "version": "1.0.0",
-  "main": "lib/PasswordBenchmark.js",
+  "version": "1.0.4",
+  "main": "dist/PasswordBenchmark.js",
   "license": "MIT",
   "scripts": {
     "test": "babel-node ./test/test.js",
