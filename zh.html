@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <title>密码强度计算器</title>
+</head>
+
+<body>
+  <form>
+    <h1>密码强度计算器</h1>
+    <p><a target="_blank" href="https://github.com/EYHN/PasswordQualityCalculator">在 Github 上查看</a>&nbsp;&nbsp;&nbsp;<a href="https://eyhn.github.io/PasswordQualityCalculator/">Engilsh</a></p>
+    <p>在下面的输入框中输入一段密码，可以计算密码的强度。
+      所有的计算发生在本地，你的密码不会被记录或上传。</p>
+    <p><label for="password">密码: </label><br><input type="password" id="password" /></p>
+
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" id="quality-progress-bar">
+      </div>
+      <span class="progress-text" id="quality-value-text">
+        0 bits
+      </span>
+    </div>
+    <p id="quality-description" style="text-align: center"></p>
+    <h4>算法来自于 KeePass</h4>
+    <blockquote>
+      <p>KeePass 使用高级算法来估计密码的质量/强度。 它搜索模式，例如流行的密码（基于大约10000个最常见密码的内置列表;检测到大小写和L33t替换的变化），重复序列，数字（由多个数字组成），恒定差异序列等。
+        覆盖整个密码的每个模式组合，计算成本（编码数据所需的比特数和模式标识符的顺序）。对于编码模式标识符，使用最佳静态熵编码器。 每个单个密码字符形成长度为1的模式，并使用依赖于字符空间的阻尼静态熵编码器进行编码。
+        最小模式组合成本用作最终质量估计。</p>
+      <footer>— <a href="https://keepass.info/help/kb/pw_quality_est.html">Password Quality Estimation</a></footer>
+    </blockquote>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </form>
+  <script src="./lib/PasswordQualityCalculator.js"></script>
+  <script src="./lib/MostPopularPasswords.js"></script>
+  <script>
+    const startColorRgb = [244, 67, 54];
+    const endColorRgb = [0, 200, 83];
+    const qualityText = document.getElementById('quality-value-text');
+    const qualityProgressBar = document.getElementById('quality-progress-bar');
+    const qualityDescription = document.getElementById('quality-description');
+    const passwordInput = document.getElementById('password');
+    function work() {
+      const quality = PasswordQualityCalculator(passwordInput.value);
+      console.log(passwordInput.value, quality)
+      qualityText.innerText = quality + ' bits'
+      const progressValue = Math.max(Math.min(quality / 128, 1), 0);
+      qualityProgressBar.style.width = progressValue * 100 + '%';
+      qualityDescription.innerText = quality < 64 && '非常弱' ||
+        quality < 80 && '弱' ||
+        quality < 112 && '中等' ||
+        quality < 128 && '强' ||
+        '非常强';
+      qualityProgressBar.style.backgroundColor = 'rgb(' +
+        (startColorRgb[0] - (startColorRgb[0] - endColorRgb[0]) * progressValue) + ',' +
+        (startColorRgb[1] - (startColorRgb[1] - endColorRgb[1]) * progressValue) + ',' +
+        (startColorRgb[2] - (startColorRgb[2] - endColorRgb[2]) * progressValue) + ')'
+    }
+    passwordInput.addEventListener('keyup', work);
+    passwordInput.addEventListener('change', work);
+  </script>
+</body>
+
+</html>

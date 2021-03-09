@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <title>Password Quality Calculator</title>
+</head>
+
+<body>
+  <form>
+    <h1>Password Quality Calculator</h1>
+    <p><a target="_blank" href="https://github.com/EYHN/PasswordQualityCalculator">Fork me on Github</a>&nbsp;&nbsp;&nbsp;<a href="./zh">中文</a></p>
+    <p>Please enter a password below to calculate the strength of the password. This won't upload your password, all
+      calculations happen locally.</p>
+    <p><label for="password">Password: </label><br><input type="password" id="password" /></p>
+
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" id="quality-progress-bar">
+      </div>
+      <span class="progress-text" id="quality-value-text">
+        0 bits
+      </span>
+    </div>
+    <p id="quality-description" style="text-align: center"></p>
+    <h4>Algorithm from KeePass</h4>
+    <blockquote>
+      <p>KeePass uses an advanced algorithm for estimating the quality/strength of passwords. It searches for patterns,
+        like e.g. popular passwords (based on a built-in list of about 10000 most common passwords; variations by
+        upper-/lower-case and L33t substitutions are detected), repeated sequences, numbers (consisting of multiple
+        digits), constant difference sequences, etc. For each pattern combination covering the whole password, the cost
+        (number of bits required to encode the data and the order of the pattern identifiers) is calculated. For
+        encoding pattern identifiers, an optimal static entropy encoder is used. Each single password character forms a
+        pattern of length 1 and is encoded using a character space-dependent damped static entropy encoder. The minimum
+        pattern combination cost is used as the final quality estimation.</p>
+      <footer>— <a href="https://keepass.info/help/kb/pw_quality_est.html">Password Quality Estimation</a></footer>
+    </blockquote>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </form>
+  <script src="./lib/PasswordQualityCalculator.js"></script>
+  <script src="./lib/MostPopularPasswords.js"></script>
+  <script>
+    const startColorRgb = [244, 67, 54];
+    const endColorRgb = [0, 200, 83];
+    const qualityText = document.getElementById('quality-value-text');
+    const qualityProgressBar = document.getElementById('quality-progress-bar');
+    const qualityDescription = document.getElementById('quality-description');
+    const passwordInput = document.getElementById('password');
+    function work() {
+      const quality = PasswordQualityCalculator(passwordInput.value);
+      console.log(passwordInput.value, quality)
+      qualityText.innerText = quality + ' bits'
+      const progressValue = Math.max(Math.min(quality / 128, 1), 0);
+      qualityProgressBar.style.width = progressValue * 100 + '%';
+      qualityDescription.innerText = quality < 64 && 'Very weak' ||
+        quality < 80 && 'Weak' ||
+        quality < 112 && 'Moderate' ||
+        quality < 128 && 'Strong' ||
+        'Very strong';
+      qualityProgressBar.style.backgroundColor = 'rgb(' +
+        (startColorRgb[0] - (startColorRgb[0] - endColorRgb[0]) * progressValue) + ',' +
+        (startColorRgb[1] - (startColorRgb[1] - endColorRgb[1]) * progressValue) + ',' +
+        (startColorRgb[2] - (startColorRgb[2] - endColorRgb[2]) * progressValue) + ')'
+    }
+    passwordInput.addEventListener('keyup', work);
+    passwordInput.addEventListener('change', work);
+  </script>
+</body>
+
+</html>
